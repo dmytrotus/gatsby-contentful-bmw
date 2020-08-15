@@ -1,0 +1,12 @@
+//additional styles
+
+.nk-navbar.nk-navbar-white-text-on-top .nk-nav>li>a{
+	color: $menu_black;
+	font-weight: 600;
+	&:hover{
+		color: $blue;
+	}
+}
+.skills > div{
+	background-size: cover !important;
+}

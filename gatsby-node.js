@@ -5,6 +5,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post-contentful.js`)
+  const mainPages = path.resolve(`./src/templates/page-contentful.js`)
+
   const result = await graphql(
     `
       {
@@ -19,6 +21,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+
+        allContentfulPage {
+          edges {
+            node {
+              slug
+              title
+            }
+          }
+        }
+
       }
     `
   )
@@ -44,6 +56,24 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // Create Main Pages.
+  const pages = result.data.allContentfulPage.edges
+
+  pages.forEach((post, index) => {
+    const previous = index === pages.length - 1 ? null : pages[index + 1].node
+    const next = index === 0 ? null : pages[index - 1].node
+
+    createPage({
+      path: page.slug,
+      component: mainPages,
+      context: {
+        slug: page.node.slug,
+      },
+    })
+  })
+
+  
 }
 
 /*exports.onCreateNode = ({ node, actions, getNode }) => {
