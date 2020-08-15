@@ -1,4 +1,5 @@
 import React from "react"
+import Logo from "../../../assets/logo.png";
 
 
 const Navbar = () => {
@@ -9,7 +10,7 @@ const Navbar = () => {
                 <div className="nk-nav-table">
 
                     <a href="index.html" className="nk-nav-logo">
-                        <img src="bmw-assets/logo.png" alt="" width="51" />
+                        <img src={Logo} alt="" width="51" />
                     </a>
 
 
