@@ -6,7 +6,9 @@ import About from './partials/About'
 import FeaturePhotoRight from './partials/FeaturePhotoRight'
 import FeaturePhotoLeft from './partials/FeaturePhotoLeft'
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, children, sectionsRightText, sectionsLeftText }) => {
+
+  console.log(sectionsRightText)
 
   return (
     <Fragment>
@@ -21,7 +23,12 @@ const Layout = ({ location, title, children }) => {
         </div>
 
         <About />
-        <FeaturePhotoRight />
+
+        {sectionsRightText.map((item, index) => {
+
+          return <FeaturePhotoRight key={index} title={item.node.title} image={item.node.image.file.url} />
+        })}
+        
         <FeaturePhotoLeft />
 
         <footer className="nk-footer">

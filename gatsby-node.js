@@ -31,6 +31,40 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
 
+     allContentfulSectionLeftText {
+      edges {
+        node {
+          title
+          content {
+            json
+          }
+          image {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+
+
+     allContentfulSectionRightText {
+        edges {
+          node {
+            title
+            content {
+              json
+            }
+            image {
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+
+
       }
     `
   )
