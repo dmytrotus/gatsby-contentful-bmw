@@ -14,7 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
               title
               slug
               content {
-                content
+                json
               }
             }
           }

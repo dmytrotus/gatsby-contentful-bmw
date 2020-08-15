@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -33,7 +34,7 @@ const BlogIndex = ({ data, location }) => {
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.description || node.excerpt,
+                  __html: documentToHtmlString(node.content.json).substring(0,120),
                 }}
               />
             </section>
@@ -59,7 +60,7 @@ export const pageQuery = graphql`
               title
               slug
               content {
-                content
+                json
               }
             }
           }

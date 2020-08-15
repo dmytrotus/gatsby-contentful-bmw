@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const ContentfulBlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.contentfulPost
@@ -37,7 +38,7 @@ const ContentfulBlogPostTemplate = ({ data, pageContext, location }) => {
             {post.date}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section dangerouslySetInnerHTML={{ __html: documentToHtmlString(post.content.json) }} />
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -91,7 +92,7 @@ export const pageQuery = graphql`
      title
      slug
      content {
-       content
+       json
       }
     }
   }
