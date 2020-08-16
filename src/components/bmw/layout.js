@@ -3,12 +3,9 @@ import { Link } from "gatsby"
 import "../../styles/styles.scss"
 import Navbar from './partials/Navbar'
 import About from './partials/About'
-import FeaturePhotoRight from './partials/FeaturePhotoRight'
-import FeaturePhotoLeft from './partials/FeaturePhotoLeft'
+import FeaturePhotoSection from './partials/FeaturePhotoSection'
 
-const Layout = ({ location, title, children, sectionsRightText, sectionsLeftText }) => {
-
-  console.log(sectionsRightText)
+const Layout = ({ MainPageSections }) => {
 
   return (
     <Fragment>
@@ -24,9 +21,8 @@ const Layout = ({ location, title, children, sectionsRightText, sectionsLeftText
 
         <About />
 
-        {sectionsRightText.map((item, index) => {
-
-          return <FeaturePhotoRight key={index} title={item.node.title} image={item.node.image.file.url} />
+        {MainPageSections.map((item, index) => {
+          return <FeaturePhotoSection key={index} title={item.title} image={item.image.file.url} content={item.content} />
         })}
         
         <FeaturePhotoLeft />

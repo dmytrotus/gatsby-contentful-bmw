@@ -1,13 +1,17 @@
 import React from "react"
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-const FeaturePhotoLeft = () => {
+const FeaturePhotoSection = ({title, image, content}) => {
+
+    const photoRight = 'push-lg-6';
 
 	return(
 		
 		<div className="nk-box bg-gray-4">
             <div className="container-fluid">
                 <div className="row skills">
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 push-lg-6"
+                    style={{backgroundImage: `url(${image})`}}>
                         
                         <div className="nk-gap-6"></div>
                         <div className="nk-gap-6"></div>
@@ -15,12 +19,11 @@ const FeaturePhotoLeft = () => {
                         <div className="nk-gap-6"></div>
                     </div>
 
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 pull-lg-6">
                         <div className="nk-box-3 text-center">
-                            <h2>New Mirrors</h2>
-                            <p className="lead text-gray-20">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure commodi veritatis perferendis, et officiis, autem magni odit error voluptatem, nihil voluptate rem voluptatibus. Ad corporis sapiente sed corrupti sequi, earum!
-                            </p>
+                            <h2>{title}</h2>
+                            <p className="lead text-gray-20"
+                            dangerouslySetInnerHTML={{ __html: documentToHtmlString(content.json) }} />
                         </div>
                         
                     </div>
@@ -31,4 +34,4 @@ const FeaturePhotoLeft = () => {
 		)
 }
 
-export default FeaturePhotoLeft
+export default FeaturePhotoSection

@@ -10,12 +10,13 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allContentfulPost.edges
-  const sectionsLeftText = data.allContentfulSectionLeftText.edges
-  const sectionsRightText = data.allContentfulSectionRightText.edges
+  const pages = data.allContentfulPage.edges
+  const MainPageSections = data.contentfulPage.content
 
-  
+  console.log(MainPageSections)
+
   return (
-    <Layout sectionsLeftText={sectionsLeftText} sectionsRightText={sectionsRightText} location={location} title={siteTitle}>
+    <Layout MainPageSections={MainPageSections} >
       <SEO title="All posts" />
       <Bio />
     </Layout>
@@ -52,34 +53,29 @@ export const pageQuery = graphql`
           }
         }
 
-     allContentfulSectionLeftText {
-      edges {
-        node {
-          title
-          content {
-            json
-          }
-          image {
-            file {
-              url
-            }
-          }
-        }
-      }
-    }
-
-
-      allContentfulSectionRightText {
-        edges {
-          node {
+      contentfulPage(slug: {eq: "main-page"}) {
+        title
+        content {
+          ... on ContentfulSectionLeftText {
             title
-            content {
-              json
-            }
             image {
               file {
                 url
               }
+            }
+            content {
+              json
+            }
+          }
+          ... on ContentfulSectionRightText {
+            title
+            image {
+              file {
+                url
+              }
+            }
+            content {
+              json
             }
           }
         }
