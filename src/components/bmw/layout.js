@@ -22,7 +22,10 @@ const Layout = ({ MainPageSections }) => {
         <About />
 
         {MainPageSections.map((item, index) => {
-          return <FeaturePhotoSection key={index} title={item.title} image={item.image.file.url} content={item.content} />
+          return <FeaturePhotoSection 
+                  key={index} title={item.title} 
+                  image={item.image.file.url} content={item.content}
+                  typename={item.__typename} />
         })}
         
 
