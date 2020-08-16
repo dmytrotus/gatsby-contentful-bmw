@@ -1,5 +1,4 @@
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
 import "../../styles/styles.scss"
 import Navbar from './partials/Navbar'
 import About from './partials/About'

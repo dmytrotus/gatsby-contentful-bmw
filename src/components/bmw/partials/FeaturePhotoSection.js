@@ -3,7 +3,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const FeaturePhotoSection = ({title, image, content, typename}) => {
 
-    const isRight = (typename == 'ContentfulSectionRightText') ? true : false;
+    const isRight = (typename === 'ContentfulSectionRightText') ? true : false;
 
 	return(
 		

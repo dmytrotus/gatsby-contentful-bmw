@@ -1,5 +1,6 @@
 import React from "react"
 import Logo from "../../../assets/logo.png";
+import { Link } from "gatsby"
 
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
                     <ul className="nk-nav nk-nav-right">
 
                         <li className="nk-drop-item">
-                            <a href="#">Download Brochure</a>
+                            <Link to="/download-brochure">Download Brochure</Link>
                         </li>
 
                         
