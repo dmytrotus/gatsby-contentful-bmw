@@ -25,7 +25,6 @@ const Layout = ({ MainPageSections }) => {
           return <FeaturePhotoSection key={index} title={item.title} image={item.image.file.url} content={item.content} />
         })}
         
-        <FeaturePhotoLeft />
 
         <footer className="nk-footer">
             <div className="container">

@@ -8,15 +8,13 @@ import { rhythm } from "../utils/typography"
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+  const siteTitle = 'See New BMW'
   const posts = data.allContentfulPost.edges
-  const pages = data.allContentfulPage.edges
   const MainPageSections = data.contentfulPage.content
-
-  console.log(MainPageSections)
-
+  const pages = data.allContentfulPage.edges
+  
   return (
-    <Layout MainPageSections={MainPageSections} >
+    <Layout MainPageSections={MainPageSections} location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
     </Layout>
@@ -43,7 +41,6 @@ export const pageQuery = graphql`
             }
           }
         }
-
      allContentfulPage {
           edges {
             node {
@@ -52,7 +49,6 @@ export const pageQuery = graphql`
             }
           }
         }
-
       contentfulPage(slug: {eq: "main-page"}) {
         title
         content {
